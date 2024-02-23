@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items.xsd">
+
+    <enumtypes>
+        <enumtype code="OnholdActionType" generate="true" autocreate="true" dynamic="true">
+            <value code="AUTHORIZE"/>
+            <value code="CAPTURE"/>
+        </enumtype>
+    </enumtypes>
+    <itemtypes>
+		
+		<itemtype code="NovalnetPaymentMode" extends="StandardPaymentMode" autocreate="true" generate="true">
+			 <attributes>
+			 
+             </attributes>
+		</itemtype>
+		
+        <itemtype code="NovalnetPaymentRefInfo" autocreate="true" generate="true" extends="GenericItem">
+            <deployment table="novalnetPaymentRefInfo" typecode="22558"/>
+            <attributes>
+                <attribute qualifier="customerNo" type="java.lang.Long">
+                    <modifiers read="true" write="true" search="false" optional="false"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="paymentType" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="orginalTid" type="java.lang.Long">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="referenceTransaction" type="java.lang.Boolean">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="cardType" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="cardHolder" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="maskedCardNumber" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="expiryDate" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="accountHolder" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="maskedAccountIban" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="paypalTransactionID" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="paypalEmailID" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="token" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="BaseStore" autocreate="false" generate="false">
+            <attributes>
+                <attribute qualifier="novalnetAPIKey" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers encrypted="false"/>
+                </attribute>
+                <attribute qualifier="novalnetTariffId" type="java.lang.Integer">
+                    <persistence type="property"/>
+                    <modifiers encrypted="false"/>
+                </attribute>
+                <attribute qualifier="novalnetPaymentAccessKey" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers encrypted="false"/>
+                </attribute>
+
+                <attribute qualifier="novalnetDisplayPayments" type="java.lang.Boolean">
+					<modifiers encrypted="false" initial="false" optional="false"/>
+                    <persistence type="property"/>
+                    <defaultvalue>java.lang.Boolean.TRUE</defaultvalue>
+                </attribute>
+                <attribute qualifier="novalnetVendorscriptTestMode" type="java.lang.Boolean">
+					<modifiers encrypted="false" initial="false" optional="false"/>
+                    <persistence type="property"/>
+						<defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="novalnetVendorscriptToEmailAddress" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers encrypted="false"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+       
+
+        <itemtype code="NovalnetPaymentInfo" extends="PaymentInfo" autocreate="true" generate="true">
+            <attributes>
+                <attribute qualifier="paymentProvider" type="java.lang.String">
+                    <modifiers read="true" write="true" search="false" optional="false"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="paymentInfo" type="java.lang.String">
+                    <modifiers read="true" write="true" search="false" optional="false"/>
+                    <persistence type="property">
+                        <columntype>
+                            <value>HYBRIS.LONG_STRING</value>
+                        </columntype>
+                    </persistence>
+                </attribute>
+                <attribute qualifier="orderHistoryNotes" type="java.lang.String">
+                    <modifiers read="true" write="true" search="false" optional="true"/>
+                    <persistence type="property">
+                        <columntype>
+                            <value>HYBRIS.LONG_STRING</value>
+                        </columntype>
+                    </persistence>
+                </attribute>
+                <attribute qualifier="paymentEmailAddress" type="java.lang.String">
+                    <modifiers read="true" write="true" search="false" optional="false"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="paymentGatewayStatus" type="java.lang.String">
+                    <modifiers read="true" write="true" search="false" optional="false"/>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="NovalnetCallbackInfo" autocreate="true" generate="true" extends="GenericItem">
+            <deployment table="novalnetCallbackInfo" typecode="22555"/>
+            <attributes>
+                <attribute qualifier="paymentType" type="java.lang.String">
+                    <modifiers read="true" write="true" search="false" optional="false"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="callbackTid" type="java.lang.Long">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="orginalTid" type="java.lang.Long">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="paidAmount" type="java.lang.Integer">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="orderAmount" type="java.lang.Integer">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="orderNo" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+
+    </itemtypes>
+</items>

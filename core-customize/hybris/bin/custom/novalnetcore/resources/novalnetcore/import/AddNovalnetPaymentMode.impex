@@ -1,0 +1,3 @@
+INSERT_UPDATE NovalnetPaymentMode;code[unique=true];name[lang=de];name[lang=en];description[lang=de];description[lang=en];active;paymentinfotype(code)
+;novalnet;Novalnet;Novalnet;Novalnet Payment Gateway;Novalnet Payment Gateway;false;PaymentInfo
+

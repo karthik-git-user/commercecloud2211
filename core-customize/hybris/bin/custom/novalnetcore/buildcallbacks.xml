@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+
+<project name="novalnetcore_buildcallbacks">
+
+    <macrodef name="novalnetcore_after_build">
+
+        <sequential>
+
+            <impexGenerate extname="novalnetcore"/>
+
+        </sequential>
+
+    </macrodef>
+
+    <macrodef name="novalnetcore_after_clean">
+
+        <sequential>
+
+            <delete failonerror="false" file="${ext.novalnetcore.path}/resources-lang/touch_impexgen"/>
+
+        </sequential>
+
+    </macrodef>
+
+
+    <!-- exclude impex files from localization -->
+
+
+    <patternset id="novalnetcore.localization.pattern">
+
+        <patternset refid="localization.defaultpattern"/>
+
+        <exclude name="**/*.impex"/>
+
+    </patternset>
+
+
+</project>

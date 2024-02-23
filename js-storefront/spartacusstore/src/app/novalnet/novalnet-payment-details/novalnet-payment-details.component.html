@@ -1,0 +1,125 @@
+<div class="cx-payment-form-billing">
+    <br/><div class="cx-payment-form-billing-address">
+        <h3 class="cx-checkout-title d-none d-lg-block d-xl-block">{{ 'paymentForm.billingAddress' | cxTranslate }}</h3>
+    </div><br/>
+    <!-- SAME AS SHIPPING CHECKBOX -->
+    <ng-container *ngIf="showSameAsDeliveryAddressCheckbox$ | async">
+        <div class="form-group">
+            <div class="form-check">
+                <label>
+                    <input type="checkbox" class="form-check-input" [checked]="sameAsDeliveryAddress" (change)="toggleSameAsDeliveryAddress()" [attr.aria-label]=" 'paymentForm.billingAddressSameAsShipping' | cxTranslate"/>
+                    <span class="form-check-label">{{'paymentForm.sameAsDeliveryAddress' | cxTranslate}}</span>
+                </label>
+            </div>
+        </div>
+    </ng-container>
+        <!-- BILLING INFO COMPONENT -->
+    <ng-container  *ngIf="sameAsDeliveryAddress && (deliveryAddress$ | async) as deliveryAddress; else billingAddress ">
+        <cx-card [content]="getAddressCardContent(deliveryAddress)"></cx-card>
+    </ng-container>
+    <!-- TODO:#future-checkout do we really want this? We can always pass more inputs to the copied address form component to make it more modular -->
+    <ng-template #billingAddress>
+        <ng-container *ngIf="!showBillingFormEdited">
+            <div [formGroup]="billingAddressForm">
+                <div class="form-group" formGroupName="country">
+                    <ng-container *ngIf="countries$ | async as countries">
+                        <div *ngIf="countries.length !== 0">
+                            <label>
+                                <span class="label-content required">{{'addressForm.country' | cxTranslate}}</span>
+                                <ng-select [inputAttrs]="{required: 'true'}" [searchable]="true" [clearable]="false" [items]="countries" bindLabel="name" bindValue="isocode" placeholder="{{ 'addressForm.selectOne' | cxTranslate }} " (change)="countrySelected($event)" formControlName="isocode" id="country-payment-select" [cxNgSelectA11y]=" { ariaLabel: 'addressForm.country' | cxTranslate }"> </ng-select>
+                                <cx-form-errors [control]="billingAddressForm.get('country.isocode')" ></cx-form-errors>
+                            </label>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <span class="label-content required">{{'addressForm.firstName.label' | cxTranslate }}</span>
+                        <input required="true" class="form-control" type="text" placeholder="{{ 'addressForm.firstName.placeholder' | cxTranslate }}"  formControlName="firstName" />
+                        <cx-form-errors [control]="billingAddressForm.get('firstName')" ></cx-form-errors>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <span class="label-content required">{{'addressForm.lastName.label' | cxTranslate }}</span>
+                        <input required="true" type="text" class="form-control" placeholder="{{ 'addressForm.lastName.placeholder' | cxTranslate}}" formControlName="lastName" />
+                        <cx-form-errors [control]="billingAddressForm.get('lastName')" ></cx-form-errors>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <span class="label-content required">{{ 'addressForm.address1' | cxTranslate }}</span>
+                        <input required="true" type="text" class="form-control" placeholder="{{ 'addressForm.streetAddress' | cxTranslate }}" formControlName="line1" />
+                        <cx-form-errors [control]="billingAddressForm.get('line1')" ></cx-form-errors>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <span class="label-content">{{'addressForm.address2' | cxTranslate}}</span>
+                        <input type="text" class="form-control" placeholder="{{ 'addressForm.aptSuite' | cxTranslate }}" formControlName="line2" />
+                    </label>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>
+                            <span class="label-content required">{{'addressForm.city.label' | cxTranslate}}</span> 
+                            <input required="true" type="text" class="form-control" placeholder="{{'addressForm.city.placeholder' | cxTranslate }}" formControlName="town"/> 
+                            <cx-form-errors [control]="billingAddressForm.get('town')" ></cx-form-errors>
+                        </label>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>
+                            <span class="label-content required">{{ 'addressForm.zipCode.label' | cxTranslate }}</span>
+                            <input required="true" type="text" class="form-control" placeholder="{{ 'addressForm.zipCode.placeholder' | cxTranslate }}" formControlName="postalCode" />  <cx-form-errors [control]="billingAddressForm.get('postalCode')" ></cx-form-errors>
+                        </label>
+                    </div>
+                    <ng-container *ngIf="regions$ | async as regions" formGroupName="region" > 
+                        <ng-container *ngIf="regions.length !== 0">
+                            <div class="form-group col-md-6">
+                                <label>
+                                    <span class="label-content required">{{ 'addressForm.state' | cxTranslate }}</span>
+                                    <ng-select [inputAttrs]="{ required: 'true' }" class="region-select" formControlName="isocodeShort" [searchable]="true" [clearable]="false" [items]="regions" bindLabel="{{regions[0].name ? 'name' : 'isocodeShort' }}"bindValue="{{ regions[0].name ? 'isocodeShort' : 'region'}}" placeholder="{{ 'addressForm.selectOne' | cxTranslate}}" id="region-select" [cxNgSelectA11y]="{ ariaLabel: 'addressForm.state' | cxTranslate }" >
+                                    </ng-select>
+                                    <cx-form-errors [control]=" billingAddressForm.get('region.isocodeShort') "></cx-form-errors>
+                                </label>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="showBillingFormEdited" >
+            <div class = "row col-md-12">
+                <cx-card class = "col-md-6" [content]="getBillingAddressCardContent()"> </cx-card>
+                <button type="button" class="link cx-action-link col-md-6" aria-describedby="content-header-0" (click)= "editBilling()"> Edit this address </button>
+            </div>       
+        </ng-container>
+
+    </ng-template>
+    
+   <ng-container  *ngIf="paymentResponse.novalnetActive && paymentResponse.novalnetDisplayPayment">
+
+	   <ng-container *ngIf="this.loadPaymentform">
+
+			<br/><h3 class="cx-checkout-title d-none d-lg-block d-xl-block">  {{ 'paymentForm.payment' | cxTranslate }}</h3><br/>
+			<!-- <ng-container *ngIf="geturl()"> -->
+
+			<iframe id = "novalnetPaymentIFrame"  width="100%" scrolling="no" style = "border: none;"></iframe>
+		<!-- </ng-container> -->
+
+		</ng-container>
+    </ng-container>
+
+
+    <div class="cx-checkout-btns row">
+        <div class="col-md-12 col-lg-6">
+            <button class="btn btn-block btn-action" (click)="back()"> {{ 'common.back' | cxTranslate }} </button>
+            <!-- <button *ngIf="paymentMethodsCount > 0" class="btn btn-block btn-action" (click)="close()" > {{ 'paymentForm.changePayment' | cxTranslate }} </button> -->
+        </div>
+        <div class="col-md-12 col-lg-6">
+            <button class="btn btn-block btn-primary" (click)="showPaymentForm()" > {{ 'common.continue' | cxTranslate }} </button>
+        </div>
+    </div>
+</div>
+
+

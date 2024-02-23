@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- Facades -->
+    
+    <alias alias="dataMapper" name="defaultDataMapper"/>
+	<bean id="defaultDataMapper" class="de.hybris.platform.webservicescommons.mapping.impl.DefaultDataMapper">
+		<property name="fieldSetBuilder" ref="fieldSetBuilder"/>
+	</bean>
+	
+	<alias alias="fieldSetBuilder" name="defaultFieldSetBuilder"/>
+    <bean id="defaultFieldSetBuilder"
+          class="de.hybris.platform.webservicescommons.mapping.impl.DefaultFieldSetBuilder">
+        <property name="defaultRecurrencyLevel" value="4"/>
+        <property name="defaultMaxFieldSetSize" value="50000"/>
+        <property name="fieldSetLevelHelper" ref="fieldSetLevelHelper"/>
+    </bean>
+
+    <alias alias="fieldSetLevelHelper" name="defaultFieldSetLevelHelper"/>
+    <bean id="defaultFieldSetLevelHelper"
+          class="de.hybris.platform.webservicescommons.mapping.impl.DefaultFieldSetLevelHelper">
+    </bean>
+   
+    <alias name="defaultNovalnetOrderFacade" alias="novalnetOrderFacade"/>
+	<bean id="defaultNovalnetOrderFacade" class="de.novalnet.order.NovalnetOrderFacade">
+        <property name="baseStoreService" ref="baseStoreService"/>
+        <property name="sessionService" ref="sessionService"/>
+        <property name="cartService" ref="cartService"/>
+        <property name="orderFacade" ref="orderFacade"/>
+        <property name="cartFacade" ref="cartFacade"/>
+        <property name="checkoutFacade" ref="checkoutFacade"/>
+        <property name="checkoutCustomerStrategy" ref="checkoutCustomerStrategy"/>
+        <property name="modelService" ref="modelService"/>
+        <property name="commonI18NService" ref="commonI18NService"/>
+        <property name="addressReverseConverter" ref="addressReverseConverter"/>
+        <property name="commerceCheckoutService" ref="commerceCheckoutService"/>
+        <property name="customerAccountService" ref="customerAccountService"/>
+        <property name="orderConverter" ref="orderConverter" />
+        <property name="cartFactory" ref="cartFactory" />
+        <property name="calculationService" ref="calculationService" />
+        <property name="addressPopulator" ref="addressPopulator" />
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+    
+</beans>

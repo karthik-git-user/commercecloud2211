@@ -1,0 +1,16 @@
+<ng-container>
+    <div class="cx-page-header">
+        <span class="cx-page-title">
+            {{ 'checkoutOrderConfirmation.confirmationOfOrder' | cxTranslate }} {{placedOrder.code}}
+        </span>
+    </div>
+    <div class="cx-order-confirmation-message" style = "text-align: var(--cx-text-align, center);padding: var(--cx-padding, 2.5rem);">
+        <h2>{{ 'checkoutOrderConfirmation.thankYou' | cxTranslate }}</h2>
+        <p>{{ 'checkoutOrderConfirmation.invoiceHasBeenSentByEmail' | cxTranslate }}</p>
+        <p><b>Novalnet Transaction Details</b></p>
+        <p class ="nn_txn_message"></p>
+    </div>
+    <div *ngIf="isGuestCustomer">
+        <cx-guest-register-form [guid]="orderGuid" ></cx-guest-register-form>
+    </div>
+</ng-container>

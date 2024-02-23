@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+
+   <extension abstractclassprefix="Generated" classprefix="Novalnetfacades" managername="NovalnetfacadesManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="novalnetfacades" usemaven="false">
+      <!-- for more information on maven managed libraries please consult https://wiki.hybris.com/x/Nq8sDQ -->
+               
+      <!-- you should add all required extensions to this list, except platform extensions which are automatically required -->         
+      <requires-extension name="acceleratorfacades"/>
+      <requires-extension name="commercefacades"/>
+      <requires-extension name="commercewebservicescommons"/>
+      <requires-extension name="validation"/>
+<!--
+      <requires-extension name="solrfacetsearchbackoffice"/>
+-->
+
+      <coremodule generated="true" manager="de.novalnet.jalo.NovalnetfacadesManager" packageroot="de.novalnet"/>
+
+   </extension>
+      
+</extensioninfo>

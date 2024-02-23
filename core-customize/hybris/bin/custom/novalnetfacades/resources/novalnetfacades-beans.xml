@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
+	
+	<bean class="de.novalnet.beans.NnPaymentResponseData">
+		<property name="paymentURL" type="String"/>
+		<property name="error" type="String"/>
+	</bean>
+	
+	<bean class="de.novalnet.beans.NnResponseData">
+		<property name="redirectURL" type="String"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnConfigData">
+		<property name="novalnetAccessKey" type="String"/>
+		<property name="novalnetActive" type="Boolean"/>
+		<property name="novalnetDisplayPayment" type="Boolean"/>
+	</bean>
+	
+	<bean class="de.novalnet.beans.NnPaymentRequestData">
+		<property name="cartId" type="String"/>
+           
+        <property name="returnUrl" type="String"/>
+            
+        <property name="paymentData" type="de.novalnet.beans.PaymentDetailsData"/>
+        
+        <property name="address" type="de.novalnet.beans.AddressDetailsData"/>
+            
+	</bean>
+	
+	<bean class="de.novalnet.beans.AddressDetailsData">
+		
+		<property name="sameAsdelivery" type="Boolean"/>
+		<property name="billingAddress" type="de.novalnet.beans.NnBillingData"/>
+		
+	</bean>
+		
+		
+	<bean class="de.novalnet.beans.PaymentDetailsData">
+		<property name="result" type="de.novalnet.beans.ResultData"/>
+            
+        <property name="payment_details" type="de.novalnet.beans.PayDetailsData"/>
+            
+        <property name="booking_details" type="de.novalnet.beans.BookingData"/>
+            
+	</bean>
+	
+	<bean class="de.novalnet.beans.PayDetailsData">
+		<property name="key"  type="String"/>
+        <property name="name"  type="String"/>
+        <property name="type" type="String"/>
+        <property name="process_mode" type="String"/>
+	</bean>
+	
+	<bean class="de.novalnet.beans.BookingData">
+		<property name="create_token"  type="Integer"/>
+        <property name="test_mode"  type="String"/>
+        <property name="payment_action" type="String"/>
+        <property name="do_redirect" type="String"/>
+        <property name="pan_hash" type="String"/>
+        <property name="unique_id" type="String"/>
+        <property name="iban" type="String"/>
+        <property name="bic" type="String"/>
+        <property name="account_holder" type="String"/>
+        <property name="force_non_gurantee" type="String"/>
+        <property name="birth_date" type="String"/>
+        <property name="min_amount" type="String"/>
+        <property name="wallet_token" type="String"/> 
+        <property name="due_date" type="Integer"/>
+	</bean>
+	
+	<bean class="de.novalnet.beans.ResultData">
+		<property name="status" type="String"/>
+        <property name="status_code" type="String"/>
+        <property name="message" type="String"/>
+            
+	</bean>
+	
+	
+	
+
+	<bean class="de.novalnet.beans.NnPaymentData">
+		<property name="novalnetCreditCard" type="de.novalnet.beans.NnCreditCardData"/>
+		<property name="novalnetDirectDebitSepa" type="de.novalnet.beans.NnDirectDebitSepaData"/>
+		<property name="novalnetPayPal" type="de.novalnet.beans.NnPayPalData"/>
+		<property name="novalnetGuaranteedDirectDebitSepa" type="de.novalnet.beans.NnGuaranteedDirectDebitSepaData"/>
+		<property name="novalnetInvoice" type="de.novalnet.beans.NnInvoiceData"/>
+		<property name="novalnetGuaranteedInvoice" type="de.novalnet.beans.NnGuaranteedInvoiceData"/>
+		<property name="novalnetPrepayment" type="de.novalnet.beans.NnPrepaymentData"/>
+		<property name="novalnetBancontact" type="de.novalnet.beans.NnBancontactData"/>
+		<property name="novalnetBarzahlen" type="de.novalnet.beans.NnBarzahlenData"/>
+		<property name="novalnetInstantBankTransfer" type="de.novalnet.beans.NnInstantBankTransferData"/>
+		<property name="novalnetOnlineBankTransfer" type="de.novalnet.beans.NnOnlineBankTransferData"/>
+		<property name="novalnetMultibanco" type="de.novalnet.beans.NnMultibancoData"/>
+		<property name="novalnetIdeal" type="de.novalnet.beans.NnIdealData"/>
+		<property name="novalnetEps" type="de.novalnet.beans.NnEpsData"/>
+		<property name="novalnetGiropay" type="de.novalnet.beans.NnGiropayData"/>
+		<property name="novalnetPrzelewy24" type="de.novalnet.beans.NnPrzelewy24Data"/>
+		<property name="novalnetPostFinanceCard" type="de.novalnet.beans.NnPostFinanceCardData"/>
+		<property name="novalnetPostFinance" type="de.novalnet.beans.NnPostFinanceData"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnRequestData">
+		<property name="paymentType" type="String"/>
+		<property name="action" type="String"/>
+		<property name="cartId" type="String"/>
+		<property name="tid" type="String"/>
+		<property name="sameAsdelivery" type="Boolean"/>
+		<property name="returnUrl" type="String"/>
+		<property name="billingAddress" type="de.novalnet.beans.NnBillingData"/>
+<!--
+		<property name="paymentData" type="de.novalnet.beans.NnPaymentsData"/>
+-->
+	<property name="paymentData" type="de.novalnet.beans.PaymentDetailsData"/>
+        
+        <property name="address" type="de.novalnet.beans.AddressDetailsData"/>
+	</bean>
+	
+	<bean class="de.novalnet.beans.NnCallbackRequestData">
+		<property name="event" type="de.novalnet.beans.NnCallbackEventData"/>
+		<property name="result" type="de.novalnet.beans.NnCallbackResultData"/>
+		<property name="transaction" type="de.novalnet.beans.NnCallbackTransactionData"/>
+		<property name="custom" type="de.novalnet.beans.NnCallbackCustomData"/>
+		<property name="merchant" type="de.novalnet.beans.NnCallbackMerchantData"/>
+		<property name="collection" type="de.novalnet.beans.NnCallbackCollectionData"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnCallbackCollectionData">
+		<property name="amount" type="String"/>
+		<property name="claim_amount" type="String"/>
+		<property name="claim_charges" type="String"/>
+		<property name="claim_fee" type="String"/>
+		<property name="currency" type="String"/>
+		<property name="date" type="String"/>
+		<property name="reference" type="String"/>
+		<property name="status_text" type="String"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnCallbackEventData">
+		<property name="type" type="String"/>
+		<property name="checksum" type="String"/>
+		<property name="tid" type="String"/>
+		<property name="parent_tid" type="String"/>
+	</bean>
+	
+	<bean class="de.novalnet.beans.NnCallbackResultData">
+		<property name="status_text" type="String"/>
+		<property name="status" type="String"/>
+		<property name="status_desc" type="String"/>
+		<property name="status_code" type="String"/>
+		<property name="additional_message" type="String"/>
+	</bean>
+	
+	<bean class="de.novalnet.beans.NnCallbackTransactionData">
+		<property name="tid" type="String"/>
+		<property name="status" type="String"/>
+		<property name="payment_type" type="String"/>
+		<property name="amount" type="String"/>
+		<property name="currency" type="String"/>
+		<property name="order_no" type="String"/>
+		<property name="test_mode" type="String"/>
+		<property name="date" type="String"/>
+		<property name="refunded_amount" type="String"/>
+		<property name="due_date" type="String"/>
+		<property name="bank_details" type="de.novalnet.beans.NnCallbackBankDetailsData"/>
+		<property name="refund" type="de.novalnet.beans.NnCallbackRefundData"/>
+	</bean>
+	
+	<bean class="de.novalnet.beans.NnCallbackMerchantData">
+		<property name="vendor" type="String"/>
+		<property name="project" type="String"/>
+	</bean>
+	
+	<bean class="de.novalnet.beans.NnCallbackRefundData">
+		<property name="amount" type="String"/>
+		<property name="currency" type="String"/>
+		<property name="payment_type" type="String"/>
+		<property name="tid" type="String"/>
+	</bean>
+	
+	<bean class="de.novalnet.beans.NnCallbackCustomData">
+		<property name="input1" type="String"/>
+		<property name="inputval1" type="String"/>
+		<property name="input2" type="String"/>
+		<property name="inputval2" type="String"/>
+	</bean>
+	
+	
+	<bean class="de.novalnet.beans.NnCallbackBankDetailsData">
+		<property name="bank_account" type="Boolean"/>
+		<property name="bank_code" type="Boolean"/>
+		<property name="bank_name" type="Boolean"/>
+		<property name="bank_place" type="Boolean"/>
+		<property name="account_holder" type="Boolean"/>
+		<property name="iban" type="Boolean"/>
+		<property name="bic" type="Boolean"/>
+	</bean>
+	
+	<bean class="de.novalnet.beans.NnCreditCardData">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+		<property name="onhold_amount" type="Integer"/>
+		<property name="onhold_action" type="String"/>
+		<property name="enforce_3d" type="Boolean"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnDirectDebitSepaData">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+		<property name="onhold_amount" type="Integer"/>
+		<property name="onhold_action" type="String"/>
+		<property name="due_date" type="Integer"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnPayPalData">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+		<property name="onhold_amount" type="Integer"/>
+		<property name="onhold_action" type="String"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnGuaranteedDirectDebitSepaData">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+		<property name="onhold_amount" type="Integer"/>
+		<property name="onhold_action" type="String"/>
+		<property name="due_date" type="Integer"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnGuaranteedInvoiceData">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+		<property name="onhold_amount" type="Integer"/>
+		<property name="onhold_action" type="String"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnInvoiceData">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+		<property name="onhold_amount" type="Integer"/>
+		<property name="onhold_action" type="String"/>
+		<property name="due_date" type="Integer"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnPrepaymentData">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+		<property name="onhold_amount" type="Integer"/>
+		<property name="onhold_action" type="String"/>
+		<property name="due_date" type="Integer"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnBarzahlenData">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+		<property name="onhold_amount" type="Integer"/>
+		<property name="onhold_action" type="String"/>
+		<property name="due_date" type="Integer"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnInstantBankTransferData">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnBancontactData">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnOnlineBankTransferData">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnMultibancoData">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnIdealData">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnEpsData">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnGiropayData">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnPrzelewy24Data">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnPostFinanceCardData">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnPostFinanceData">
+		<property name="active" type="Boolean"/>
+		<property name="test_mode" type="Boolean"/>
+		<property name="description" type="String"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnPaymentDetailsData">
+		<property name="status" type="String"/>
+		<property name="comments" type="String"/>
+		<property name="tid" type="String"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnBillingData">
+		<property name="titleCode" type="String"/>
+		<property name="firstName" type="String"/>
+		<property name="lastName" type="String"/>
+		<property name="addressId" type="String"/>
+		<property name="line1" type="String"/>
+		<property name="line2" type="String"/>
+		<property name="postalCode" type="String"/>
+		<property name="company" type="String"/>
+		<property name="dob" type="String"/>
+		<property name="town" type="String"/>
+		<property name="country" type="de.novalnet.beans.NnCountryData"/>
+		<property name="region" type="de.novalnet.beans.NnRegionData"/>
+		
+	</bean>
+
+	<bean class="de.novalnet.beans.NnCountryData">
+		<property name="isoCode" type="String"/>
+	</bean>
+	
+	<bean class="de.novalnet.beans.NnCallbackResponseData">
+		<property name="message" type="String"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnRegionData">
+		<property name="isoCode" type="String"/>
+	</bean>
+
+	<bean class="de.novalnet.beans.NnPaymentsData">
+		<property name="panHash" type="String"/>
+		<property name="uniqId" type="String"/>
+		<property name="iban" type="String"/>
+		<property name="bic" type="String"/>
+	</bean>
+	
+	<bean class="de.novalnet.beans.NnCartData">
+		<property name="paymentMethod" type="String"/>
+		<property name="cartId" type="String"/>
+		<property name="billingAddress" type="de.novalnet.beans.NnBillingData"/>
+	</bean>
+
+</beans>

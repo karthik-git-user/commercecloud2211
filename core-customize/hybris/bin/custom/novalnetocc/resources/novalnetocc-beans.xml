@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
+
+	<!--
+		Example Data POJO
+	
+	<bean class="yemptypackage.data.MyPojo">
+		<property name="id" type="String"/>
+		<property name="flag" type="boolean"/>
+	</bean>
+	-->
+	
+	<bean class="novalnet.dto.payment.NnPaymentResponseWsDTO">
+        <property name="paymentURL" type="String">
+            <description>URL for loading payments in checkout</description>
+        </property>
+        <property name="error" type="String">
+            <description>description for the roor</description>
+        </property>
+    </bean>
+    
+    <bean class="novalnet.dto.payment.NnResponseWsDTO">
+        <property name="redirectURL" type="String">
+            <description>URL for the external payments</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnConfigWsDTO">
+        <property name="novalnetAccessKey" type="String">
+            <description>Key to load and process the payments</description>
+        </property>
+        <property name="novalnetActive" type="Boolean">
+            <description>display novalnet payments</description>
+        </property>
+        <property name="novalnetDisplayPayment" type="Boolean">
+            <description>display novalnet payments</description>
+        </property>
+        
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnPaymentWsDTO">
+        <property name="novalnetCreditCard" type="novalnet.dto.payment.NnCreditCardWsDTO">
+            <description>Novalnet CreditCard Configuration</description>
+        </property>
+        <property name="novalnetDirectDebitSepa" type="novalnet.dto.payment.NnDirectDebitSepaWsDTO">
+            <description>Novalnet DirectDebit SEPA Configuration</description>
+        </property>
+        <property name="novalnetPayPal" type="novalnet.dto.payment.NnPayPalWsDTO">
+            <description>Novalnet PayPal Configuration</description>
+        </property>
+        <property name="novalnetGuaranteedDirectDebitSepa" type="novalnet.dto.payment.NnGuaranteedDirectDebitSepaWsDTO">
+            <description>Novalnet GuaranteedDirectDebitSepa Configuration</description>
+        </property>
+        <property name="novalnetGuaranteedInvoice" type="novalnet.dto.payment.NnGuaranteedInvoiceWsDTO">
+            <description>Novalnet GuaranteedDirectDebitSepa Configuration</description>
+        </property>
+        <property name="novalnetInvoice" type="novalnet.dto.payment.NnInvoiceWsDTO">
+            <description>Novalnet Invoice Configuration</description>
+        </property>
+
+        <property name="novalnetPrepayment" type="novalnet.dto.payment.NnPrepaymentWsDTO">
+            <description>Novalnet Prepayment Configuration</description>
+        </property>
+
+        <property name="novalnetBancontact" type="novalnet.dto.payment.NnBancontactWsDTO">
+            <description>Novalnet Bancontact Configuration</description>
+        </property>
+
+        <property name="novalnetBarzahlen" type="novalnet.dto.payment.NnBarzahlenWsDTO">
+            <description>Novalnet Barzahlen Configuration</description>
+        </property>
+        <property name="novalnetInstantBankTransfer" type="novalnet.dto.payment.NnInstantBankTransferWsDTO">
+            <description>Novalnet InstantBankTransfer Configuration</description>
+        </property>
+        <property name="novalnetOnlineBankTransfer" type="novalnet.dto.payment.NnOnlineBankTransferWsDTO">
+            <description>Novalnet OnlineBankTransfer Configuration</description>
+        </property>
+        <property name="novalnetMultibanco" type="novalnet.dto.payment.NnMultibancoWsDTO">
+            <description>Novalnet Multibanco Configuration</description>
+        </property>
+        <property name="novalnetIdeal" type="novalnet.dto.payment.NnIdealWsDTO">
+            <description>Novalnet Ideal Configuration</description>
+        </property>
+
+        <property name="novalnetEps" type="novalnet.dto.payment.NnEpsWsDTO">
+            <description>Novalnet Eps Configuration</description>
+        </property>
+        <property name="novalnetGiropay" type="novalnet.dto.payment.NnGiropayWsDTO">
+            <description>Novalnet Giropay Configuration</description>
+        </property>
+        <property name="novalnetPrzelewy24" type="novalnet.dto.payment.NnPrzelewy24WsDTO">
+            <description>Novalnet Przelewy24 Configuration</description>
+        </property>
+        <property name="novalnetPostFinanceCard" type="novalnet.dto.payment.NnPostFinanceCardWsDTO">
+            <description>Novalnet PostFinanceCard Configuration</description>
+        </property>
+        <property name="novalnetPostFinance" type="novalnet.dto.payment.NnPostFinanceWsDTO">
+            <description>Novalnet PostFinanceData Configuration</description>
+        </property>
+    </bean>
+    
+    <bean class="novalnet.dto.payment.NnCreditCardWsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+        <property name="onhold_amount" type="String">
+            <description>amount above which transaction should be palecd in onhold</description>
+        </property>
+        <property name="onhold_action" type="String">
+            <description>Direct Capture or hold the transaction</description>
+        </property>
+        <property name="enforce_3d" type="Boolean">
+            <description>Enforce 3D secure for all the transaction</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnDirectDebitSepaWsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+        <property name="onhold_amount" type="String">
+            <description>amount above which transaction should be palecd in onhold</description>
+        </property>
+        <property name="onhold_action" type="String">
+            <description>Direct Capture or hold the transaction</description>
+        </property>
+        <property name="due_date" type="Integer">
+            <description>when the amount should be debited form customer account</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnPayPalWsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+        <property name="onhold_amount" type="String">
+            <description>amount above which transaction should be palecd in onhold</description>
+        </property>
+        <property name="onhold_action" type="String">
+            <description>Direct Capture or hold the transaction</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnGuaranteedDirectDebitSepaWsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+        <property name="onhold_amount" type="String">
+            <description>amount above which transaction should be palecd in onhold</description>
+        </property>
+        <property name="onhold_action" type="String">
+            <description>Direct Capture or hold the transaction</description>
+        </property>
+        <property name="due_date" type="Integer">
+            <description>when the amount should be debited from the customer</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnGuaranteedInvoiceWsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+        <property name="onhold_amount" type="String">
+            <description>amount above which transaction should be palecd in onhold</description>
+        </property>
+        <property name="onhold_action" type="String">
+            <description>Direct Capture or hold the transaction</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnInvoiceWsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+        <property name="onhold_amount" type="String">
+            <description>amount above which transaction should be palecd in onhold</description>
+        </property>
+        <property name="onhold_action" type="String">
+            <description>Direct Capture or hold the transaction</description>
+        </property>
+        <property name="due_date" type="Integer">
+            <description>Customer should credit the amount within</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnPrepaymentWsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+        <property name="due_date" type="Integer">
+            <description>Customer should credit the amount within</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnMultibancoWsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnBarzahlenWsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnInstantBankTransferWsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnOnlineBankTransferWsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnBancontactWsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnPostFinanceCardWsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnPostFinanceWsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnIdealWsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnEpsWsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnGiropayWsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnPrzelewy24WsDTO">
+        <property name="active" type="Boolean">
+            <description>Specify wether payment is active or not</description>
+        </property>
+        <property name="test_mode" type="Boolean">
+            <description>Test mode for the payment</description>
+        </property>
+        <property name="description" type="String">
+            <description>Payment description</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnPaymentDetailsWsDTO">
+        <property name="status" type="String">
+            <description>Transaction Status</description>
+        </property>
+        <property name="comments" type="String">
+            <description>Transaction Comments</description>
+        </property>
+        <property name="tid" type="String">
+            <description>Transaction ID</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnRequestWsDTO">
+        <property name="paymentType" type="String">
+            <description>Payment method</description>
+        </property>
+        <property name="action" type="String">
+            <description>Process to be done</description>
+        </property>
+        <property name="cartId" type="String">
+            <description>Cart Id</description>
+        </property>
+        <property name="tid" type="String">
+            <description>Transaction Id</description>
+        </property>
+        <property name="returnUrl" type="String">
+            <description>return url</description>
+        </property>
+        <property name="sameAsdelivery" type="Boolean">
+            <description>Billing address is same as delivery address</description>
+        </property>
+        <property name="billingAddress" type="novalnet.dto.payment.NnBillingWsDTO">
+            <description>Billing details</description>
+        </property>
+<!--
+        <property name="paymentData" type="novalnet.dto.payment.NnPaymentsWsDTO">
+            <description>Payment details</description>
+        </property>
+-->
+        <property name="paymentData" type="novalnet.dto.payment.PaymentDetailsWsDTO">
+            <description>Payment details</description>
+        </property>
+        <property name="address" type="novalnet.dto.payment.AddressDetailsWsDTO">
+            <description>Customer Address details</description>
+        </property>
+    </bean>
+    
+    <bean class="novalnet.dto.payment.NnPaymentRequestWsDTO">
+		<property name="cartId" type="String">
+            <description>Cart Id</description>
+        </property>
+        <property name="returnUrl" type="String">
+            <description>return url</description>
+        </property>
+        <property name="paymentData" type="novalnet.dto.payment.PaymentDetailsWsDTO">
+            <description>Payment details</description>
+        </property>
+        <property name="address" type="novalnet.dto.payment.AddressDetailsWsDTO">
+            <description>Customer Address details</description>
+        </property>
+	</bean>
+	
+	<bean class="novalnet.dto.payment.AddressDetailsWsDTO">
+		<property name="sameAsdelivery" type="Boolean">
+			<description>Billing address is same as delivery address</description>
+		</property>
+		<property name="billingAddress" type="novalnet.dto.payment.NnBillingWsDTO">
+			<description>Billing details</description>
+		</property>
+	</bean>
+	
+	<bean class="novalnet.dto.payment.PaymentDetailsWsDTO">
+		<property name="result" type="novalnet.dto.payment.ResultWsDTO">
+            <description>Selected Payment result</description>
+        </property>
+        <property name="payment_details" type="novalnet.dto.payment.PayDetailsWsDTO">
+            <description>Selected Payment details</description>
+        </property>
+        <property name="booking_details" type="novalnet.dto.payment.BookingWsDTO">
+            <description>Payment Booking details</description>
+        </property>
+	</bean>
+	
+	<bean class="novalnet.dto.payment.PayDetailsWsDTO">
+		<property name="key"  type="String">
+            <description>Key of the payment</description>
+        </property>
+        <property name="name"  type="String">
+            <description>Name of the payment</description>
+        </property>
+        <property name="type" type="String">
+            <description>Novalnet payment type</description>
+        </property>
+        <property name="process_mode" type="String">
+            <description>Indicateswether the selected payment is direct or reedirect</description>
+        </property>
+	</bean>
+	
+	<bean class="novalnet.dto.payment.BookingWsDTO">
+		<property name="create_token"  type="Integer">
+            <description>indicates wether payment data should be saved</description>
+        </property>
+        <property name="test_mode"  type="String">
+            <description>Test mode for the transaction</description>
+        </property>
+        <property name="payment_action" type="String">
+            <description>Indicates the transaction should be authorized or capture</description>
+        </property>
+        <property name="do_redirect" type="String">
+            <description>Whether CreditCrard should be handled with 3D secure</description>
+        </property>
+        <property name="pan_hash" type="String">
+            <description>Hash value for the customer entered Card</description>
+        </property>
+        <property name="unique_id" type="String">
+            <description>Uniq ID to decode the creted hash for CreditCard</description>
+        </property>
+        <property name="iban" type="String">
+            <description>Customer IBAN</description>
+        </property>
+        <property name="bic" type="String">
+            <description>Customer BIC</description>
+        </property>
+        <property name="account_holder" type="String">
+            <description>Account Holder Name</description>
+        </property>
+        <property name="force_non_gurantee" type="String">
+            <description>Force Non Gurantee while creating transaction</description>
+        </property>
+        <property name="birth_date" type="String">
+            <description>Customer birth date</description>
+        </property>
+        <property name="min_amount" type="String">
+            <description>Minimum amount for guaranteed payment</description>
+        </property>
+        <property name="wallet_token" type="String">
+            <description>Payment token for applepay and googlepay</description>
+        </property>
+        <property name="due_date" type="Integer">
+            <description>Due date for customer to pay the order</description>
+        </property>
+		
+	</bean>
+	
+	<bean class="novalnet.dto.payment.ResultWsDTO">
+		<property name="status" type="String">
+            <description>result status</description>
+        </property>
+        <property name="status_code" type="String">
+            <description> result status code</description>
+        </property>
+        <property name="message" type="String">
+            <description> result status code</description>
+        </property>
+	</bean>
+    
+    <bean class="novalnet.dto.payment.NnCallbackRequestWsDTO">
+        <property name="event" type="novalnet.dto.payment.NnCallbackEventWsDTO">
+            <description>Callback event data</description>
+        </property>
+        <property name="result" type="novalnet.dto.payment.NnCallbackResultWsDTO">
+            <description>Callback result data</description>
+        </property>
+        <property name="transaction" type="novalnet.dto.payment.NnCallbackTransactionWsDTO">
+            <description>Callback Transaction data</description>
+        </property>
+<!--
+        <property name="event" type="novalnet.dto.payment.NnCallbackCustomerWsDTO">
+            <description>Callback Customer data</description>
+        </property>
+-->
+        <property name="custom" type="novalnet.dto.payment.NnCallbackCustomWsDTO">
+            <description>Callback Custom data</description>
+        </property>
+        <property name="merchant" type="novalnet.dto.payment.NnCallbackMerchantWsDTO">
+            <description>Callback Merchant data</description>
+        </property>
+        <property name="collection" type="novalnet.dto.payment.NnCallbackCollectionWsDTO">
+            <description>Callback Collection data</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnCallbackCollectionWsDTO">
+        <property name="amount" type="String">
+            <description>Collection amount</description>
+        </property>
+        <property name="claim_amount" type="String">
+            <description>Collection Claim amount</description>
+        </property>
+         <property name="claim_charges" type="String">
+            <description>Collection Claim charges</description>
+        </property>
+         <property name="claim_fee" type="String">
+            <description>Collection Claim fee</description>
+        </property>
+         <property name="currency" type="String">
+            <description>Collection Claim currency</description>
+        </property>
+         <property name="date" type="String">
+            <description>Collection Claim date</description>
+        </property>
+         <property name="reference" type="String">
+            <description>Collection Claim reference </description>
+        </property>
+        <property name="status_text" type="String">
+            <description>Collection Claim status</description>
+        </property>
+    </bean>
+    
+    <bean class="novalnet.dto.payment.NnCallbackMerchantWsDTO">
+		<property name="vendor" type="String">
+            <description>Your Merchant ID</description>
+        </property>
+		<property name="project" type="String">
+            <description>Your Project ID</description>
+        </property>
+	</bean>
+	
+    <bean class="novalnet.dto.payment.NnCallbackResponseWsDTO">
+		<property name="message" type="String">
+            <description>callback response message</description>
+        </property>
+	</bean>
+	
+    <bean class="novalnet.dto.payment.NnCallbackEventWsDTO">
+		<property name="type" type="String">
+            <description>Event type</description>
+        </property>
+		<property name="checksum" type="String">
+            <description>checksum for the callback request</description>
+        </property>
+        <property name="tid" type="String">
+            <description>Transaction ID</description>
+        </property>
+        <property name="parent_tid" type="String">
+            <description>Parent Transaction ID</description>
+        </property>
+	</bean>
+	
+    <bean class="novalnet.dto.payment.NnCallbackCustomWsDTO">
+		<property name="input1" type="String">
+            <description>Input Key 1</description>
+        </property>
+		<property name="inputval1" type="String">
+            <description>Input Value 1</description>
+        </property>
+        <property name="input2" type="String">
+            <description>Input key 2</description>
+        </property>
+        <property name="inputval2" type="String">
+            <description>Input key 2</description>
+        </property>
+	</bean>
+	
+	<bean class="novalnet.dto.payment.NnCallbackResultWsDTO">
+		<property name="status_text" type="String">
+            <description>Callback result status text</description>
+        </property>
+		<property name="status" type="String">
+            <description>Callback result status</description>
+        </property>
+        <property name="status_code" type="String">
+            <description>Callback result status code</description>
+        </property>
+        <property name="status_desc" type="String">
+            <description>Callback result status description</description>
+        </property>
+        <property name="additional_message" type="String">
+            <description>Additional message about the transaction</description>
+        </property>
+	</bean>
+	
+	<bean class="novalnet.dto.payment.NnCallbackTransactionWsDTO">
+		<property name="tid" type="String">
+            <description>17 digit unique Novalnet transaction ID</description>
+        </property>
+		<property name="status" type="String">
+            <description>The current status of the payment</description>
+        </property>
+        <property name="payment_type" type="String">
+            <description>Transaction`s Payment type (defined in Novalnet)</description>
+        </property>
+        <property name="amount" type="String">
+            <description>Transaction`s amount that going to be charged from the customer.</description>
+        </property>
+        <property name="currency" type="String">
+            <description>The currency in which the transaction is being processed. The three-character currency code as defined in ISO-4217.</description>
+        </property>
+        <property name="order_no" type="String">
+            <description>Order`s unique identifier received from the shop</description>
+        </property>
+        <property name="test_mode" type="String">
+            <description>Denotes the processing mode of the transaction.</description>
+        </property>
+        <property name="date" type="String">
+            <description>Transaction date (incl. time)</description>
+        </property>
+        <property name="due_date" type="String">
+            <description>Date by which the customer must settle the payment</description>
+        </property>
+        <property name="refunded_amount" type="String">
+            <description>Total amount refunded</description>
+        </property>
+        <property name="bank_details" type="novalnet.dto.payment.NnCallbackBankDetailsWsDTO">
+            <description>DThis objects contains the Bank details to which customer has to transfer the transaction amount</description>
+        </property>
+        <property name="refund" type="novalnet.dto.payment.NnCallbackRefundWsDTO">
+            <description>This objects contains the refund details for the transaction</description>
+        </property>
+	</bean>
+	
+	<bean class="novalnet.dto.payment.NnCallbackRefundWsDTO">
+		<property name="amount" type="String">
+            <description>Refund amount</description>
+        </property>
+		<property name="currency" type="String">
+            <description>refund currency</description>
+        </property>
+        <property name="bank_name" type="String">
+            <description>Bank name</description>
+        </property>
+        <property name="payment_type" type="String">
+            <description>Refund done with payment type</description>
+        </property>
+        <property name="tid" type="String">
+            <description>Transaction ID for the refund</description>
+        </property>
+	</bean>
+	
+	<bean class="novalnet.dto.payment.NnCallbackBankDetailsWsDTO">
+		<property name="bank_account" type="String">
+            <description>Bank account number</description>
+        </property>
+		<property name="bank_code" type="String">
+            <description>Bank code</description>
+        </property>
+        <property name="bank_name" type="String">
+            <description>Bank name</description>
+        </property>
+        <property name="bank_place" type="String">
+            <description>Place of the bank</description>
+        </property>
+        <property name="account_holder" type="String">
+            <description>Name of the bank account holder</description>
+        </property>
+        <property name="iban" type="String">
+            <description>IBAN (International Bank Account Number) of the bank account holder</description>
+        </property>
+        <property name="bic" type="String">
+            <description>BIC (Bank Identifier Code) of the bank account holder</description>
+        </property>
+	</bean>
+
+    <bean class="novalnet.dto.payment.NnBillingWsDTO">
+        <property name="titleCode" type="String">
+            <description>Title for user</description>
+        </property>
+        <property name="firstName" type="String">
+            <description>User first name</description>
+        </property>
+        <property name="lastName" type="String">
+            <description>User last name</description>
+        </property>
+        <property name="addressId" type="String">
+            <description>Address ID</description>
+        </property>
+        <property name="line1" type="String">
+            <description>Address Line 1</description>
+        </property>
+        <property name="line2" type="String">
+            <description>Address Line 2</description>
+        </property>
+        <property name="postalCode" type="String">
+            <description>Address Postal Code</description>
+        </property>
+        <property name="company" type="String">
+            <description>Company name</description>
+        </property>
+        <property name="dob" type="String">
+            <description>date of birth format - YYYY-MM-DD</description>
+        </property>
+        <property name="town" type="String">
+            <description>Address town</description>
+        </property>
+        <property name="country" type="novalnet.dto.payment.NnCountryWsDTO">
+            <description>Address Country</description>
+        </property>
+        <property name="region" type="novalnet.dto.payment.NnRegionWsDTO">
+            <description>Address region</description>
+        </property>
+        
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnCountryWsDTO">
+        <property name="isoCode" type="String">
+            <description>Country iso code</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnRegionWsDTO">
+        <property name="isoCode" type="String">
+            <description>Region iso code</description>
+        </property>
+    </bean>
+
+    <bean class="novalnet.dto.payment.NnPaymentsWsDTO">
+        <property name="panHash" type="String">
+            <description>Credit Card PanHash</description>
+        </property>
+        <property name="uniqId" type="String">
+            <description>Credit Card Unique ID</description>
+        </property>
+        <property name="iban" type="String">
+            <description>Direct Debit SEPA IBAN</description>
+        </property>
+        <property name="bic" type="String">
+            <description>Direct Debit SEPA BIC</description>
+        </property>
+    </bean>
+    
+    <bean class="novalnet.dto.payment.NnCartWsDTO">
+        <property name="cartId" type="String">
+            <description>Cart Id</description>
+        </property>
+        <property name="paymentMethod" type="String">
+            <description>Name of the payment method</description>
+        </property>
+        <property name="billingAddress" type="novalnet.dto.payment.NnBillingWsDTO">
+            <description>Billing details</description>
+        </property>
+    </bean>
+    
+
+</beans>
